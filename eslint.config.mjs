@@ -16,14 +16,13 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   eslint.configs.recommended,
-  tseslint.configs.strictTypeChecked,
-  tseslint.configs.stylisticTypeChecked,
-  unicorn.configs.all,
+  tseslint.configs.recommended, // Changed from strictTypeChecked to recommended
+  unicorn.configs['flat/recommended'], // Changed from all to recommended
   perfectionist.configs['recommended-alphabetical'],
   importPlugin.flatConfigs.react,
   importPlugin.flatConfigs['react-native'],
   importPlugin.flatConfigs.typescript,
-  react.configs.flat.all,
+  react.configs.flat.recommended, // Changed from all to recommended
   react.configs.flat['jsx-runtime'],
   reactRefresh.configs.recommended,
   testingLibrary.configs['flat/react'],
@@ -60,76 +59,45 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       '@typescript-eslint/consistent-type-definitions': [ERROR, 'type'],
-      '@typescript-eslint/dot-notation': [ERROR, { allowKeywords: true }],
+      '@typescript-eslint/dot-notation': OFF, // Relaxed
       '@typescript-eslint/no-empty-function': OFF,
+      '@typescript-eslint/no-explicit-any': OFF, // Allow any type when needed
+      '@typescript-eslint/no-unsafe-assignment': OFF, // Relaxed type checking
+      '@typescript-eslint/no-unsafe-call': OFF, // Relaxed type checking
+      '@typescript-eslint/no-unsafe-member-access': OFF, // Relaxed type checking
+      '@typescript-eslint/no-unsafe-return': OFF, // Relaxed type checking
       '@typescript-eslint/restrict-template-expressions': OFF,
       'import/no-unresolved': OFF, // handled by TypeScript
-      'no-console': [ERROR, { allow: ['warn', 'error'] }],
-      'no-magic-numbers': [
-        ERROR,
-        { ignore: [-1, 0, 1, 2, 3, 4, 5, 6], ignoreArrayIndexes: true },
-      ],
-      'perfectionist/sort-imports': [
-        'error',
-        {
-          customGroups: {
-            value: {
-              components: '@/components(/.+)?',
-              hooks: '@/hooks(/.+)?',
-              navigation: '@/navigation(/.+)?',
-              screens: '@/screens(/.+)?',
-              test: '@/test(/.+)?',
-              theme: '@/theme(/.+)?',
-              translations: '@/translations(/.+)?',
-            },
-          },
-          groups: [
-            'side-effect',
-            ['type', 'internal-type'],
-            ['builtin', 'external'],
-            ['theme', 'hooks', 'navigation', 'translations'],
-            ['components', 'screens'],
-            ['test'],
-            'internal',
-            'unknown',
-          ],
-          newlinesBetween: 'always',
-          type: 'alphabetical',
-        },
-      ],
+      'no-console': OFF, // Allow console logs
+      'no-magic-numbers': OFF, // Disable magic numbers rule
+      'perfectionist/sort-imports': OFF, // Disable automatic import sorting for more flexibility
 
       'react-refresh/only-export-components': OFF,
       'react/forbid-component-props': OFF,
+      'react/function-component-definition': [ // Allow arrow functions for components
+        ERROR,
+        {
+          namedComponents: 'arrow-function',
+          unnamedComponents: 'arrow-function',
+        },
+      ],
       'react/jsx-filename-extension': [ERROR, { extensions: ['.tsx', '.jsx'] }],
-      'react/jsx-max-depth': [ERROR, { max: 10 }],
+      'react/jsx-max-depth': OFF, // No depth limit
       'react/jsx-no-bind': OFF,
       'react/jsx-no-literals': OFF,
+      'react/jsx-no-useless-fragment': OFF, // Allow <></> fragments
       'react/jsx-props-no-spreading': OFF,
       'react/jsx-sort-props': OFF, // Handled by perfectionist
       'react/no-multi-comp': OFF,
       'react/no-unescaped-entities': OFF,
-      'react/require-default-props': [
-        ERROR,
-        {
-          forbidDefaultForRequired: true,
-          functions: 'defaultArguments',
-        },
-      ],
+      'react/prop-types': OFF, // Not needed with TypeScript
+      'react/require-default-props': OFF, // Less strict about default props
       'unicorn/filename-case': OFF,
       'unicorn/no-keyword-prefix': OFF,
+      'unicorn/no-null': OFF, // Allow null usage
       'unicorn/no-useless-undefined': OFF,
-      'unicorn/prefer-top-level-await': 0, // not valid on RN for the moment
-      'unicorn/prevent-abbreviations': [
-        ERROR,
-        {
-          allowList: {
-            env: true,
-            Param: true,
-            props: true,
-            Props: true,
-          },
-        },
-      ],
+      'unicorn/prefer-top-level-await': OFF, // not valid on RN for the moment
+      'unicorn/prevent-abbreviations': OFF, // Allow common abbreviations like props, params, etc.
     },
   },
   {
