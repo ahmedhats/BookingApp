@@ -35,13 +35,12 @@ function Startup({ navigation }: RootScreenProps<Paths.Startup>) {
     <SafeScreen>
       <View
         style={[
-          layout.flex_1,
-          layout.col,
-          layout.itemsCenter,
-          layout.justifyCenter,
+          {
+            backgroundColor: 'red',
+          },
         ]}
       >
-        <AssetByVariant
+        {/* <AssetByVariant
           path="tom"
           resizeMode="contain"
           style={{ height: 300, width: 300 }}
@@ -51,7 +50,7 @@ function Startup({ navigation }: RootScreenProps<Paths.Startup>) {
         ) : undefined}
         {isError ? (
           <Text style={[fonts.size_16, fonts.red500]}>{t('common_error')}</Text>
-        ) : undefined}
+        ) : undefined} */}
       </View>
     </SafeScreen>
   );

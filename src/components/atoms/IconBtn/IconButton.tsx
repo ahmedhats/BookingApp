@@ -1,27 +1,22 @@
+import colors from '@/colors/colors';
 import React from 'react';
 import { Pressable, StyleSheet } from 'react-native';
-
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 type IconButtonProps = {
   Icon: React.ComponentType<any>;
-  isRounded?: boolean;            
-  onPress?: () => void;           
+  isRounded?: boolean;
+  onPress?: () => void;
 };
 
-const IconButton: React.FC<IconButtonProps> = ({ Icon, isRounded = false, onPress }) => {
+const IconButton: React.FC<IconButtonProps> = ({
+  Icon,
+  isRounded = true,
+  onPress,
+}) => {
   return (
-    <Pressable
-      onPress={onPress}
-      style={({ pressed }) => [
-        styles.button,
-        { 
-          backgroundColor: pressed ? '#ddd' : '#fff',
-          borderRadius: isRounded ? 50 : 6,
-          padding: isRounded ? 10 : 20,
-        }
-      ]}
-    >
-      <Icon />
+    <Pressable onPress={onPress}>
+      <MaterialCommunityIcons name="arrow-left" size={24} />
     </Pressable>
   );
 };
