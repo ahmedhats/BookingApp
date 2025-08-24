@@ -4,6 +4,7 @@ interface Colors {
     primary: string,
     secondary: string,
     text: string,
+    settingsBackGround:string,
     borderColor: string
 }
 
@@ -13,7 +14,8 @@ const colors: Colors = {
     primary: '#3B71FE',
     secondary: '#23262F',
     text: '#78828A',
-    borderColor: '#78828A'
+    settingsBackGround:'#23262F',
+    borderColor: '#353945'
 }
 
 export default colors

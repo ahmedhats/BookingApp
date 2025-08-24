@@ -6,6 +6,7 @@ type InputProps ={
     placeHolder: string;
     autoCapitalize: 'none' | 'sentences' | 'words' | 'characters';
     secureTextEntry?: boolean;
+    keyBoardType?: 'default' | 'email-address' | 'numeric' | 'phone-pad' | 'ascii-capable' | 'numbers-and-punctuation' | 'url' | 'name-phone-pad' | 'decimal-pad' | 'twitter' | 'web-search' | 'visible-password';
 }
 
 const styles = StyleSheet.create({
