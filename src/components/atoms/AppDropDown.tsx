@@ -21,9 +21,13 @@ export default function AppDropDown() {
       <View style={styles.container}>
         <Dropdown
           style={styles.dropdown}
+          containerStyle={styles.containerStyle}
+          inputSearchStyle={styles.inputSearchStyle}
           placeholderStyle={styles.placeholderStyle}
           selectedTextStyle={styles.selectedTextStyle}
-          inputSearchStyle={styles.inputSearchStyle}
+          itemTextStyle={styles.itemTextStyle}
+          itemContainerStyle={styles.itemContainerStyle}
+          activeColor={colors.primary}
           iconStyle={styles.iconStyle}
           data={data}
           search
@@ -37,7 +41,7 @@ export default function AppDropDown() {
             setValue(item.value);
           }}
           renderLeftIcon={() => (
-            <AntDesign style={styles.icon} color="black" name="Safety" size={20} />
+            <AntDesign style={styles.icon} color="white" name="search1" size={20} />
           )}
         />
       </View>
@@ -48,19 +52,26 @@ const styles = StyleSheet.create({
     container:{
       width:'90%',
     },
+    containerStyle:{
+      backgroundColor:colors.settingsBackGround,
+      borderWidth:0,
+      borderRadius:20,
+      padding:3,
+      // paddingTop:5,
+    },
     dropdown: {
-      margin: 16,
       padding: 16,
       height: 50,
-      borderWidth:1 ,
+      borderWidth:2 ,
       borderRadius:21,
-      borderColor:'white',
+      borderColor:colors.borderColor,
       backgroundColor: colors.settingsBackGround,
     },  
     icon: {
       marginRight: 5,
     },
     placeholderStyle: { 
+      color:'white',
       fontSize: 16,
     },
     selectedTextStyle: {
@@ -72,7 +83,17 @@ const styles = StyleSheet.create({
       height: 20,
     },
     inputSearchStyle: {
+      color:'white',
       height: 40,
       fontSize: 16,
+      padding:9,
+      borderRadius:20,
+      // borderWidth:0,
     },
+    itemTextStyle:{
+      color:'white',
+    },
+    itemContainerStyle:{
+      
+    }
   });
