@@ -4,6 +4,7 @@ interface Colors {
     primary: string,
     secondary: string,
     text: string,
+    settingsBackGround:string,
     borderColor: string
 }
 
