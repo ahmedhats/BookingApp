@@ -8,7 +8,7 @@ import { StyleSheet, View, Image, ImageProps, ImageSourcePropType, StyleProp, Im
 //   containerStyle={{ alignItems: 'center', margin: 10 }}
 //   resizeMode="contain"
 // />
-
+    
 // it will take 
 // - source, style (user defined) 
 // - containerStyle (user defined)
