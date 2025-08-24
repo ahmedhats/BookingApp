@@ -13,7 +13,7 @@ const colors: Colors = {
     primary: '#3B71FE',
     secondary: '#23262F',
     text: '#78828A',
-    borderColor: '#78828A'
+    borderColor: '#353945'
 }
 
 export default colors
