@@ -5,7 +5,8 @@ interface Colors {
     secondary: string,
     text: string,
     settingsBackGround:string,
-    borderColor: string
+    borderColor: string,
+    placeHolder: string
 }
 
 const colors: Colors = {
@@ -15,7 +16,8 @@ const colors: Colors = {
     secondary: '#23262F',
     text: '#78828A',
     settingsBackGround:'#23262F',
-    borderColor: '#353945'
+    borderColor: '#353945',
+    placeHolder: '#9ca4ab',
 }
 
 export default colors
