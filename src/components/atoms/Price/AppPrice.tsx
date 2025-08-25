@@ -13,7 +13,7 @@ type AppPriceProps = {
 export default function AppPrice({ content, size }: AppPriceProps) {
     return (
         <View>
-            <Text style={[styles.text, size]}>{`$${content}.00`}</Text>
+            <Text style={[styles.text, size]}>{`$${content}`}</Text>
         </View>
     )
 }
