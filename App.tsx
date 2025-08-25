@@ -7,7 +7,8 @@ import Input from "./src/components/atoms/Input/Input";
 export default function App() {
   return (
       <View style={styles.container}>
-        <Input placeHolder="Enter text" autoCapitalize="none" size="large" />
+        <Text>hello world </Text>
+        <StatusBar style="light" />
       </View>
   );
 }
