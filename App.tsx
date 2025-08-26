@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import TripCard from "./src/components/molecules/TripCard";
 
 export default function App() {
   return (
