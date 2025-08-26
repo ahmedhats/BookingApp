@@ -3,9 +3,12 @@ import { TextInput, StyleSheet, View, Image, TouchableOpacity } from 'react-nati
 import colors from '../../colors/colors';
 import AntDesign from "@expo/vector-icons/AntDesign";
 
+// example
+// <Input placeHolder="search" autoCapitalize?="none" size="large" type="search" keyBoardType="numeric"/>
+
 type InputProps ={
     placeHolder: string;
-    autoCapitalize: 'none' | 'sentences' | 'words' | 'characters';
+    autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
     keyBoardType?: 'default' | 'email-address' | 'numeric' | 'phone-pad' | 'ascii-capable' | 'numbers-and-punctuation' | 'url' | 'name-phone-pad' | 'decimal-pad' | 'twitter' | 'web-search' | 'visible-password';
     size: 'small' | 'medium' | 'large';
     type?: 'search'|'password'|'default';
@@ -40,9 +43,19 @@ const styles = StyleSheet.create({
   },
   input:{
     color:'#fff',
+    fontSize:16,
+  },
+  passwordInput:{
+    color:'#fff',
     width:'90%',
     fontSize:16,
-  }
+  },
+  searchInput:{
+    color:'#fff',
+    width:'90%',
+    fontSize:16,
+  },
+
 })
 
 const EyeIcon = (props:EyeIconProps) => {
@@ -58,16 +71,17 @@ const EyeIcon = (props:EyeIconProps) => {
   );
 }
 
-const Input = (props: InputProps) => {
+const AppInput = (props: InputProps) => {
     const [visible, setVisible] = React.useState(true);
 
 
   return (
     <View style={[styles.common,styles[props.size]]}>
-      <TextInput placeholder={props.placeHolder} autoCorrect={false} secureTextEntry={props.type==='password'? visible:false} underlineColorAndroid="transparent" placeholderTextColor={colors.placeHolder} autoCapitalize={props.autoCapitalize} textContentType='password' style={styles.input} />
+      {props.type === 'search' && <AntDesign name="search1" size={20} color={colors.placeHolder} style={{marginRight:8}} />}
+      <TextInput placeholder={props.placeHolder} autoCorrect={false} secureTextEntry={props.type==='password'? visible:false} underlineColorAndroid="transparent" placeholderTextColor={colors.placeHolder} autoCapitalize={props.autoCapitalize? props.autoCapitalize : 'none'} textContentType='password' style={props.type === 'search' ? styles.searchInput : props.type === 'password' ? styles.passwordInput : styles.input} />
       {props.type === 'password' && <EyeIcon visible={visible} setVisible={setVisible} />}
     </View>
   );
 };
 
-export default Input;
+export default AppInput;
