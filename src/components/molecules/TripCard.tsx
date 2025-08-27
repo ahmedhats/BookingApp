@@ -43,12 +43,12 @@ export default function TripCard({imageUrl,isVertical=false,tripName,tripLocatio
 
     <View style={styles.tripInfo}>
       <View>
-        <Text style={styles.tripName}>{tripName}</Text>
-        <View style={styles.tripLocation}>
+        <Text style={[styles.tripName,{marginBottom:7}]}>{tripName}</Text>
+        <View style={[styles.tripLocation,{marginBottom:3}]}>
           <AntDesign name="enviromento" size={16} color="white" />
           <Text style={styles.tripLocationText}>{tripLocation}</Text>
         </View>
-        <AppPrice content={tripPrice} size={18} perWhat={perWhat}/>
+        <AppPrice content={tripPrice} size={18} perWhat={perWhat} isPrimaryColor={true}/>
       </View>
       <View>
         <Pressable style={styles.favButton} onPress={() => alert('show ratings')} >

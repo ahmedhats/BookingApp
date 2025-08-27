@@ -8,13 +8,16 @@ import colors from "../../../colors/colors";
 type AppPriceProps = {
     content: number,
     size: number,
-    perWhat: string
+    perWhat: string,
+    isPrimaryColor:boolean,
 }
 
-export default function AppPrice({ content, size, perWhat }: AppPriceProps) {
+export default function AppPrice({ content, size, perWhat,isPrimaryColor = true}: AppPriceProps) {
     return (
         <View style={styles.container}>
-            <Text style={[styles.text, { fontSize: size }]}>{`$${content}`}</Text>
+            <Text 
+                style={[styles.text, { fontSize: size,color:isPrimaryColor ? colors.primary : "white",}]}>{`$${content}`}
+            </Text>
             {perWhat && <Text style={[styles.perWhat,{ fontSize: size ? size / 1.5 : 12 } ]}>{`/${perWhat}`}</Text>}
         </View>
     )
@@ -26,7 +29,6 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     text: {
-        color: colors.primary,
         fontWeight: "bold"
     },
     perWhat: {
